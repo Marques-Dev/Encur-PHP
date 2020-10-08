@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-samu
-=======
-sam
->>>>>>> 3896d90d73e2e6c485fccf502ffcfa78fa874e29
+## Encuratador de links em PHP, usando arquivos. <br>
+
+Basta baixar e colocar o arquivo descompactado dentro da pasta htdocs de seu servidor <br>
+E já esta funcionando!!!
