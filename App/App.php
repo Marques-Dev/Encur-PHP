@@ -3,8 +3,11 @@ require_once("Shortener.php");
 
 class App{
 
+
   public function __construct(){
+    //verifica de se existe um diretorio
     if(!is_dir(PATH)){
+      //se nao existir ele cria 
       mkdir(PATH);
     }
   }
@@ -17,6 +20,8 @@ class App{
 
     $objData = serialize($shortener);
 
+
+//conexao para o arquivo, e gravando o os dados em um arquivo
     $fp = fopen(PATH ."/".$shortener->getId(). ".db", "w");
     fwrite($fp, $objData);
     fclose($fp);
@@ -24,23 +29,28 @@ class App{
     return true;
   }
 
+//fazendo com q tenha um unico id de url, assim eliminando a possibilidade de ter duas url com mesmo id 
   function GetUniqueId(){
     $allFiles= $this->ReadAll();
     $valid = false;
     $uniqueId = $this->GetRandomString(URLLENGTH);
 
-    if($allFiles != null){
+    if($allFiles != null){ 
+      // verificando se o id que foi sorteado pelo random nao e igual ao que esta nos arquivos, caso seja
+      // ira sortear um novo usando o random ate q seja diferente
+
+      //vai rodar ate q seja valido
       while(!$valid){
-        $v = true;
+        $v = true;//s
 
         for ($i=0; $i < count($allFiles); $i++) {
-          if(substr($allFiles[$i], 0, -3) == $uniqueId){
+          if(substr($allFiles[$i], 0, -3) == $uniqueId){ // -3 porque tem o '.db' no final dos arquivos, assim vai pegar somente o id 
             $v = false;
           }
         }
 
-        if(!$v){
-          $uniqueId = $this->GetRandomString(URLLENGTH);
+        if(!$v){ // se v for igual a falso gera um novo id para a url
+          $uniqueId = $this->GetRandomString(URLLENGTH); // se foi sorteado um novo id para essa url, vai sobrepor
         }else{
           $valid = true;
         }
@@ -67,6 +77,7 @@ class App{
     return $listUrl;
   }
 
+//pegando os aquivos do diretorio 
   function GetAllFiles(){
     if(!is_dir(PATH))
     return;
@@ -86,7 +97,7 @@ class App{
 
       //WRITEFILE
       $newObj = serialize($short);
-
+      //enquenato uma pessoa mexe em um arquivo outra pessoa nao pode mexer nele, assim trazendo mais segurança
       $fp = fopen($f, "w");
       fwrite($fp, $newObj);
       fclose($fp);
@@ -101,7 +112,7 @@ class App{
     print_r($var);
     echo "</pre>";
   }
-
+//-----------------------------------------------------------------------------------
 //usando randomicamente caracters da variavel 'a'
   function GetRandomString(int $length){
     $a = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

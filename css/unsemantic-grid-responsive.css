@@ -1,6 +1,3 @@
-/* ============================================ */
-/* This file has a mobile-to-desktop breakpoint */
-/* ============================================ */
 @media (max-width: 400px) {
   @-ms-viewport {
     width: 320px;
