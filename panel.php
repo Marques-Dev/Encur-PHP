@@ -51,10 +51,10 @@ $listUrl = $app->ReadAll();
       <form method="post">
         <!-- botoes -->
         <div class="grid-80 mobile-grid-100">
-          <input class="input text full-width" type="text" name="txtUrl" id="txtUrl" placeholder="Your URL here">
+          <input class="input text full-width" type="text" name="txtUrl" id="txtUrl" placeholder="Digite a URL">
         </div>
         <div class="grid-20 mobile-grid-100">
-          <input class="input btn bold full-width" type="submit" name="btnCreate" value="Create">
+          <input class="input btn bold full-width" type="submit" name="btnCreate" value="Criar">
         </div>
         <div class="clear"></div>
       </form>
@@ -67,14 +67,13 @@ $listUrl = $app->ReadAll();
           <tr>
             <th>ID</th>
             <th>ORIGINAL URL</th>
-            <th style="min-width:150px;">NEW URL</th>
-            <th>ACCESS</th>
-            <th>REMOVE</th>
+            <th style="min-width:150px;">NOVA URL</th>
+            <th>ACESSADAS</th>
+            <th>REMOVER</th>
           </tr>
         </thead>
         <tbody>
           <?php
-          //
           if($listUrl != null){
             foreach ($listUrl as $l) {
               ?>
@@ -87,7 +86,7 @@ $listUrl = $app->ReadAll();
                   onclick="Copy(this);"/>
                 </td>
                 <td style="text-align: center; font-weight: bold; color: red;"><?=$l->getAccess();?></td>
-                <td><input type="button" class="input btn-remove" value="REMOVE" onclick="Delete(this);" data-id="<?=$l->getId();?>"/></td>
+                <td><input type="button" class="input btn-remove" value="REMOVER" onclick="Delete(this);" data-id="<?=$l->getId();?>"/></td>
               </tr>
               <?php
             }

@@ -20,7 +20,7 @@ if($txtUserKey){
     $_SESSION["auth"] = true;
     header("Location: panel.php");
   }else{
-    $result = "Invalid user key";
+    $result = "chave errada";
   }
 }
 ?>
@@ -39,7 +39,7 @@ if($txtUserKey){
     <h1>Encurtador - Samu</h1>
     <br>
     <form method="post" onsubmit="return Login();">
-      <input class="input full-width" type="text" name="txtUserKey" id="txtUserKey" placeholder="Put your key here">
+      <input class="input full-width" type="text" name="txtUserKey" id="txtUserKey" placeholder="Digite sua chave">
       <button type="submit" class="input btn-login full-width" name="button">Login</button>
     </form>
     <p id="pResult"><?=$result;?>&nbsp;</p>

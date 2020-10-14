@@ -12,6 +12,7 @@ class App{
     }
   }
 
+//verifica se esta chegando a url q foi digitada
   function Write(string $url){
     $shortener = new Shortener();
     $shortener->setId($this->GetUniqueId());

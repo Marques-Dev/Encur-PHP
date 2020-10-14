@@ -9,13 +9,13 @@ function CreateURL(){
 
 //regra para nao enviar nada vazio ou menor q 3 
   if(txtUrl.length <=3){
-    pResult.innerHTML = "<span style='color: red;'>Invalid URL</span>";
+    pResult.innerHTML = "<span style='color: red;'>invalida URL</span>";
     return false;
   }
 }
 
 function Delete(event){
-  if(!confirm("Do you really want to remove this URL?"))
+  if(!confirm("Realmente quer remover essa url?"))
     return;
     event.disabled = true;
     event.value = "REMOVED";
